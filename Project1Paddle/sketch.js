@@ -17,7 +17,7 @@ function draw(){
   fill(255, 255, 255);
   text(score, 400, 400);
   paddle.run();
-  for(var i = 0; i<Balls.lenght; i++){
+  for(var i = 0; i<Balls.length; i++){
     Balls[i].run();
   }
 }

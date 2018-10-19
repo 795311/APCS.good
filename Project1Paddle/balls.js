@@ -28,12 +28,12 @@ function Ball(loc, vel, rad, col){ //gives the parameters of the ball
   }
 
 this.checkCollision = function(){
-  for(var i =0 ; i < balls.length; i++){
-   if(balls[i].loc.x > paddle.loc.x &&
-   balls[i].loc.y > (paddle.loc.x + width) &&
-   balls[i].loc.x < paddle.width &&
-   balls[i].loc.y < (paddle.height + height)){
-   ball[i].splice(i,1);
+  for(var i =0 ; i < Balls.length; i++){
+   if(Balls[i].loc.x > paddle.loc.x &&
+   Balls[i].loc.y > (paddle.loc.x + width) &&
+   Balls[i].loc.x < paddle.width &&
+   Balls[i].loc.y < (paddle.height + height)){
+   Ball[i].splice(i,1);
  }
   }
 }
