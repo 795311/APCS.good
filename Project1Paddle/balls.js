@@ -1,7 +1,7 @@
-function Ball(location, velocity, radius, col){ //gives the parameters of the ball/chaser
-  this.loc=location;
-  this.vel=velocity;
-  this.rad=radius;
+function Ball(loc, vel, rad, col){ //gives the parameters of the ball
+  this.loc=loc;
+  this.vel=vel;
+  this.rad=rad;
   this.col=col;
   this.acc = createVector(0,.1);
 
@@ -26,9 +26,8 @@ function Ball(location, velocity, radius, col){ //gives the parameters of the ba
     if(this.loc.y < 0) this.vel.y = -this.vel.y;
     if(this.loc.y > height) this.vel.y = -this.vel.y;
   }
-}
 
-function checkCollision(){
+this.checkCollision = function(){
   for(var i =0 ; i < balls.length; i++){
    if(balls[i].loc.x > paddle.loc.x &&
    balls[i].loc.y > (paddle.loc.x + width) &&
@@ -37,4 +36,5 @@ function checkCollision(){
    ball[i].splice(i,1);
  }
   }
+}
 }
