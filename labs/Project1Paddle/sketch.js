@@ -23,13 +23,13 @@ function draw(){
     balls[i].run();
   }
   if(score >= 10){
-    text(score = "YOU WIN!", 400, 400);
+    text(score = "YOU WIN!", 400, 400); //if the score is more than or equal to 10, you win
     textSize(80);
     fill(255, 255, 255);
   }
   checkCollision();
   if(newGame === true){  //create a new game if the ball hits the paddle from the bottom
-    numofballs = numofballs +5;
+    numofballs = numofballs +5; //adds 5 balls every time a new round starts
     newGame = false;
     balls = [];
     loadBalls(numofballs);
@@ -57,13 +57,11 @@ function loadBalls(numBalls){
         //if if hits from top do this
         if(a.vel.y > 0){
           balls.splice(i,1);
-          score = score + 1;
+          score = score + 1; //adds 1 to the score each time a ball is spliced
         } else{
           //starts new round if it hits from bottom
           newgame = true;
         }
         }
-
-
     }
   }

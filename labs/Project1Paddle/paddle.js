@@ -11,7 +11,7 @@ function Paddle(loc, width, height, vel, col){ //parameters of the paddle
 
   this.update = function(){
   var mouseLoc = createVector(mouseX, 600);
-  this.loc = p5.Vector.lerp(this.loc, mouseLoc, .5);
+  this.loc = p5.Vector.lerp(this.loc, mouseLoc, .5); //lerps the paddle to the mouse
   }
  this.render = function(){
    fill(255, 255, 255);
