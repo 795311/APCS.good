@@ -1,19 +1,17 @@
-function Paddle(loc, width, length, vel, col){
+function Paddle(loc, width, height, vel, col){ //parameters of the paddle
   this.loc = loc;
   this.w = width;
-  this.l = length;
+  this.height = height;
   this.col = col;
   this.vel = vel;
-
   this.run = function(){
     this.update();
     this.render();
   }
 
   this.update = function(){
-    paddleLength = width/2
-    this.loc.x = lerp(this.loc.x, mouseX-paddleLength, .15)
-
+  var mouseLoc = createVector(mouseX, 600);
+  this.loc = p5.Vector.lerp(this.loc, mouseLoc, .5);
   }
  this.render = function(){
    fill(255, 255, 255);

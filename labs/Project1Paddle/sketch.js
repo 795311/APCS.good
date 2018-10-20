@@ -1,63 +1,69 @@
-var Balls = [];
-var paddle;
-var score = 0;
+//Global Variables
+var balls = [];
+var paddle = [];
+var numofballs = 10;
 var newGame = false;
+var score = 0;
 
-function setup(){ //setup code for canvas, background, balls
+function setup(){ //setup code for project
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
-  background(0,0,0);
-  loadBalls(10);
-  loadPaddle();
-  frameRate(120);
+  background(0,0,0); //draw canvas
+  loadBalls(numofballs); //load balls
+  paddle = new Paddle(createVector(0,0), 10, 50);
 }
 
 function draw(){
   background(20,20,20);
-  textSize(35);
-  checkCollision();
+  textSize(40);
   fill(255, 255, 255);
-  text(score, 400, 400);
+  text(score, 350, 400);
   paddle.run();
-  for(var i = 0; i<Balls.length; i++){
-    Balls[i].run();
+  for(var i = 0; i<balls.length; i++){
+    balls[i].run();
+  }
+  if(score >= 10){
+    text(score = "YOU WIN!", 400, 400);
+    textSize(80);
+    fill(255, 255, 255);
+  }
+  checkCollision();
+  if(newGame === true){  //create a new game if the ball hits the paddle from the bottom
+    numofballs = numofballs +5;
+    newGame = false;
+    balls = [];
+    loadBalls(numofballs);
   }
 }
-
+//load balls into the array
 function loadBalls(numBalls){
   for(i=0; i <numBalls; i++){
   var loc = createVector(random(width), 60);
   var vel = createVector(random(-3,3), random(-3,3));
   var radius = 25;
   var col = color(random(1, 255), random(1, 255), random(1, 255));
-  Balls.push(new Ball(loc, vel, radius, col));
+  balls.push(new Ball(loc, vel, radius, col));
 }
-}
-function loadPaddle(){
-  var loc = createVector(400, 500);
-  var vel = createVector (0,0);
-  var width = 150;
-  var length = 20;
-  var col = color(255, 255, 255);
-  paddle = new Paddle(loc, width, length, col);
 }
 
+//check to see if there is collision of the ball and the Paddle
  function checkCollision(){
-   for(var i = Balls.length-1; i>=0; i--){
-     var a = Balls[i];
-     if(a.loc.x > (paddle.loc.x) &&
-     a.loc.x < (paddle.loc.x + 150) &&
-     a.loc.y < (paddle.loc.y+20) &&
-     a.loc.y > (paddle.loc.y)){
-       //if if hits from top do this
-       if(a.vel.y > 0){
-         console.log(paddle.loc);
-         console.log(a.loc);
-         Balls.splice(i,1);
-       } else{
-         //starts new round if it hits from bottom
-         newgame = true;
-       }
-     }
-   }
- }
+   for(var i = balls.length-1; i>=0; i--){
+      var a = balls[i];
+      if(a.loc.x > (paddle.loc.x) &&
+      a.loc.x < (paddle.loc.x + 150) &&
+      a.loc.y < (paddle.loc.y + 50) &&
+      a.loc.y > (paddle.loc.y)){
+        //if if hits from top do this
+        if(a.vel.y > 0){
+          balls.splice(i,1);
+          score = score + 1;
+        } else{
+          //starts new round if it hits from bottom
+          newgame = true;
+        }
+        }
+
+
+    }
+  }
