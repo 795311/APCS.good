@@ -10,22 +10,22 @@ function setup(){ //setup code for project
 }
 
 function draw(){
-  background()
-  for(var i = 0; i < Bar.lenght; i++)
+  background(255,255,255)
+  for(var i = 0; i< Bar.length; i++){
     Bar[i].run();
+  }
 }
 
 function loadBar(numBar){
-  for(var j = 0; j<numBar; j++){
-  var w;
-  var h;
-  var loc;
-  var red;
-  var green;
-  var blue;
-  var bar;
+  for(var j = 0; j< numBar; j++){
+  var w = 800/numBar;
+  var h = 250;
+  var loc = createVector(0+(w*j), 150);
+  var red = random(0, 255);
+  var green = random(0, 255);
+  var blue = random(0, 255);
   var clr = color(red, green, blue);
-  var clrAvg = (blue);
+  var clrAvg = (blue + green + red)/3;
   var Bars = new colorBar(loc, w, h, clr, clrAvg);
     Bar.push(Bars);
   }
@@ -33,17 +33,12 @@ function loadBar(numBar){
 
 function bubbleSort(Bar){
   var length = Bar.length;
-  for(var i = 0; i < length; i++0){
+  for(var i = 0; i < length; i++){
     for(var p = 0; p < (length - i - 1); p++){
-      var a =
-      var b =
-      
-      if(txt[p] > txt[p+1]){
-
-        var temp = txt[p];
-        txt[p] = txt[p+1];
-        txt[p+1] = temp;
-        console.log(txt);
+      if(Bar[p].clrAvg > Bar[p+1].clrAvg){
+        var temp = Bar[p];
+        Bar[p] = Bar[p+1];
+        Bar[p+1] = temp;
       }
     }
   }

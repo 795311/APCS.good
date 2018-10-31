@@ -5,3 +5,12 @@ function colorBar(loc, w, h, clr, clrAvg){
   this.clr = clr;
   this.clrAvg = clrAvg;
 }
+
+this.run = function(){
+  this.render();
+}
+
+this.render = function(){
+  fill(this.clr);
+  rect(this.loc.x, this.loc.y, this.h, this.w);
+}
