@@ -1,17 +1,44 @@
 var snake;
 var w = 20;
 var colo, rows;
+var food;
 
 function setup(){
   var cnv = createCanvas(800, 800);
   var colo = width/w;
   var rows = height/w;
   cnv.position((windowWidth-width)/2, 30);
-  background(20,20,20);
+  background(0);
   snake = new Snake(createVector(400, 400), createVector(1));
+  food = new Food(createVector(random(0,400), color(0,0,255)));
 }
+
 
 function draw(){
   snake.run();
+  food.run();
+  //if snake gets food, startNewRound
+}
+function keyPressed(){
+  if(keyCode === 87){
+    snake.vel = createVector(0, -1);
+  }
+  if(keyCode === 83){
+    snake.vel = createVector(0, 1);
+  }
+  if(keyCode === 68){
+    snake.vel = createVector(1,0);
+  }
+  if(keyCode === 65){
+    snake.vel = createVector(-1,0);
+  }
+}
+function startNewRound(){
+  //update score
+  //make snake grow by one
+}
 
+function startNewGame(){
+  //set score to 0
+  //random food not near the middle
 }
