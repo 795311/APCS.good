@@ -1,20 +1,20 @@
 
 
-function Food(loc, clr){
-  this.loc = loc;
-  this.clr = clr;
+function Food(){
+  this.vec = createVector().mult(w);
+
+  this.x = function(){
+    return this.vec.x;
+  }
+
+  this.y = function(){
+    return this.vec.y;
 }
-
-this.run = function(){
-  this.update();
-  this.render();
+this.draw = function(){
+  fill(255, 255, 255);
+  rect(this.x(), this.y(), x, x);
 }
-
-this.update = function(){
-
+this.ate = function(){
+  this.vec = randomVector().mult(w);
 }
-
-this.render = function(){
-  fill(0,0,255);
-  rect(this.loc.x, this.loc.y, w, w);
 }

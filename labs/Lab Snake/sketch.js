@@ -2,6 +2,9 @@ var snake;
 var w = 20;
 var colo, rows;
 var food;
+var startNewGame = false;
+var startNewRound;
+
 
 function setup(){
   frameRate(9);
@@ -9,8 +12,7 @@ function setup(){
   var colo = width/w;
   var rows = height/w;
   cnv.position((windowWidth-width)/2, 30);
-  snake = new Snake(createVector(400, 400), createVector(1));
-  food = new Food(createVector(random(0,400), color(0,0,255)));
+  startNewGame();
 }
 
 
@@ -40,6 +42,8 @@ function startNewRound(){
 }
 
 function startNewGame(){
+  snake = new Snake(createVector(400, 400), createVector(1));
+  food = new Food(createVector(random(0,400), color(255,255,255)));
   //set score to 0
   //random food not near the middle
 }
