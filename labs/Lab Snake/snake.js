@@ -1,6 +1,8 @@
 function Snake(loc, vel){
  this.loc = loc;
  this.vel = vel;
+ this.segments = [];
+ this.segments.push(createVector(0,0));
 
 this.run = function(){
   this.update();
@@ -8,6 +10,8 @@ this.run = function(){
 }
 
 this.update = function(){
+  this.segments[0].x = this.loc.x;
+  this.segments[0].y = this.loc.y;
   this.loc.add(this.vel);
   this.loc.x = constrain(this.loc.x, 0, width-w);
   this.loc.y = constrain(this.loc.y, 0, height-w);
