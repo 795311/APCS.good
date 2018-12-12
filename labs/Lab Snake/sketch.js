@@ -27,16 +27,16 @@ function draw(){
 
 function keyPressed(){
   text(keyCode, 0, 0);
-  if(keyCode === 87){
+  if(keyCode === 87){ // turn up (w)
     snake.vel = createVector(0, -1*w);
   }
-  if(keyCode === 83){
+  if(keyCode === 83){ // turn down (s)
     snake.vel = createVector(0, 1*w);
   }
-  if(keyCode === 68){
+  if(keyCode === 68){ // turn left (a)
     snake.vel = createVector(1*w,0);
   }
-  if(keyCode === 65){
+  if(keyCode === 65){ // turn left (d)
     snake.vel = createVector(-1*w,0);
   }
 }
